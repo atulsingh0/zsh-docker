@@ -22,7 +22,7 @@ USER $USERNAME
 
 # RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/v1.1.1/zsh-in-docker.sh)" -- \
 COPY zsh-in-docker.sh zsh-in-docker-mine.sh p10k.zsh /tmp/
-RUN /tmp/zsh-in-docker.sh \
+RUN /tmp/zsh-in-docker-mine.sh \
     # -t https://github.com/denysdovhan/spaceship-prompt \
     # -a 'SPACESHIP_PROMPT_ADD_NEWLINE="false"' \
     # -a 'SPACESHIP_PROMPT_SEPARATE_LINE="false"' \
@@ -44,5 +44,6 @@ RUN /tmp/zsh-in-docker.sh \
     && sudo  apt-get clean -y \
     && sudo rm -rf /var/lib/apt/lists/*
 
+WORKDIR /home/$USERNAME
 ENTRYPOINT [ "/bin/zsh" ]
 CMD ["-l"]
