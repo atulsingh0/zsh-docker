@@ -33,7 +33,16 @@ RUN /tmp/zsh-in-docker.sh \
     -p https://github.com/zsh-users/zsh-syntax-highlighting \
     -p 'history-substring-search' \
     -a 'bindkey "\$terminfo[kcuu1]" history-substring-search-up' \
-    -a 'bindkey "\$terminfo[kcud1]" history-substring-search-down'
+    -a 'bindkey "\$terminfo[kcud1]" history-substring-search-down' \
+    # 
+    # Install any other package you want here
+    # Add any command you want to run as root here
+    && sudo apt-get install -y gnupg2 zoxide asciinema \
+    #
+    # Clean up
+    && sudo apt-get autoremove -y \
+    && sudo  apt-get clean -y \
+    && sudo rm -rf /var/lib/apt/lists/*
 
 ENTRYPOINT [ "/bin/zsh" ]
 CMD ["-l"]

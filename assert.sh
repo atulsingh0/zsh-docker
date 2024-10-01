@@ -310,3 +310,8 @@ assert_le() {
     return 1
   fi
 }
+
+hash_command() {
+  type "$1" > /dev/null 2>&1
+  return "$?"
+}
