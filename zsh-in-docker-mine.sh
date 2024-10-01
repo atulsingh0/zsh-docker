@@ -184,12 +184,13 @@ fi
 zshrc_template "$HOME" "$THEME" "$plugin_list" > "$HOME"/.zshrc
 
 # Install powerlevel10k if no other theme was specified
+mkdir -p "$HOME"/.config/
 if [ "$THEME" = "default" ]; then
     git clone --depth 1 https://github.com/romkatv/powerlevel10k "$HOME"/.oh-my-zsh/custom/themes/powerlevel10k
     # powerline10k_config >> "$HOME"/.zshrc
-    mkdir -p "$HOME"/.config/
     cp /tmp/p10k.zsh "$HOME"/.config/
-    echo "source ~/.config/p10k.zsh" >> "$HOME"/.zshrc
+    echo "" >> "$HOME"/.zshrc
+    echo "source $HOME/.config/p10k.zsh" >> "$HOME"/.zshrc
 fi
 
 # Generating banner

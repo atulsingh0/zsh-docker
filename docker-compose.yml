@@ -7,3 +7,4 @@ services:
       - ./:/workspace
       - ~/.ssh:/home/vscode/.ssh
       - ~/.gitconfig:/home/vscode/.gitconfig
+      - ./.gnupg:/home/vscode/.gnupg
